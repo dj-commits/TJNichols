@@ -8,6 +8,8 @@ size = Vector3(3.41002, 4.48047, 0.31543)
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
+collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_l2u47")
 

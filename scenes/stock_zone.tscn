@@ -1,16 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyw0c7f1ndh1t"]
+[gd_scene load_steps=9 format=3 uid="uid://cyw0c7f1ndh1t"]
 
 [ext_resource type="Script" path="res://scripts/stock_zone.gd" id="1_65jfc"]
-[ext_resource type="Script" path="res://scenes/stock_camera.gd" id="2_5vxc2"]
+[ext_resource type="Script" path="res://scripts/stock_camera.gd" id="2_5vxc2"]
 [ext_resource type="PackedScene" uid="uid://cxufprbydwj7h" path="res://scenes/arm.tscn" id="2_alaf3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xfrdv"]
 radius = 1.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_13q4r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpwax"]
+albedo_color = Color(1, 0.145098, 0.113725, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_3byqn"]
+material = SubResource("StandardMaterial3D_mpwax")
+inner_radius = 2.141
+outer_radius = 2.0
+rings = 32
+
+[sub_resource type="Skin" id="Skin_yx7m8"]
+
 [node name="StockZone" type="Node3D"]
 script = ExtResource("1_65jfc")
 
 [node name="StockArea" type="Area3D" parent="."]
+collision_mask = 3
 
 [node name="StockCollider" type="CollisionShape3D" parent="StockArea"]
 shape = SubResource("SphereShape3D_xfrdv")
@@ -22,6 +36,15 @@ script = ExtResource("2_5vxc2")
 [node name="Arm" parent="." instance=ExtResource("2_alaf3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.517956, 1.14521, 0)
 visible = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63319, 3, 0)
+amount = 4
+lifetime = 1.5
+visibility_aabb = AABB(-4, -8.995, -4, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_13q4r")
+draw_pass_1 = SubResource("TorusMesh_3byqn")
+draw_skin = SubResource("Skin_yx7m8")
 
 [connection signal="body_entered" from="StockArea" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="StockArea" to="." method="_on_area_3d_body_exited"]

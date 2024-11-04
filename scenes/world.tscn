@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dl3yd2oi6mvwf"]
+[gd_scene load_steps=13 format=3 uid="uid://dl3yd2oi6mvwf"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_4gcy8"]
 [ext_resource type="PackedScene" uid="uid://d3pork6x4ou3o" path="res://scenes/ground.tscn" id="1_x1pfp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2x71cnikrifs" path="res://scenes/fence.tscn" id="3_k0wj7"]
 [ext_resource type="PackedScene" uid="uid://my3mwwitwk7l" path="res://scenes/shelf.tscn" id="4_2o72n"]
 [ext_resource type="PackedScene" uid="uid://jo28uo63eua6" path="res://scenes/santa.tscn" id="5_o2npr"]
+[ext_resource type="PackedScene" uid="uid://dtgbxgvy5i233" path="res://scenes/foot_loops.tscn" id="7_y5qld"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vf3fv"]
 sky_top_color = Color(0.328583, 0.464211, 0.583008, 1)
@@ -163,3 +164,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.456, 1.5, 0)
 
 [node name="Santa" parent="." instance=ExtResource("5_o2npr")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 10.0667, 4.40485, -26.2765)
+
+[node name="FootLoops" parent="." instance=ExtResource("7_y5qld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57601, 4.40192, -2.3577)
+gravity_scale = 0.0

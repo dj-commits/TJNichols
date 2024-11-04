@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtgbxgvy5i233"]
+
+[ext_resource type="PackedScene" uid="uid://dug2m8px0yqki" path="res://models/FootLoops.glb" id="1_r54h3"]
+
+[node name="FootLoops" type="RigidBody3D"]
+
+[node name="Mesh" parent="." instance=ExtResource("1_r54h3")]
