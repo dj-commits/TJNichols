@@ -1,5 +1,5 @@
 extends CharacterBody3D
-var debug: bool = false
+var debug: bool = true
 
 @export var move_speed: float
 var mouse_pos: Vector2
@@ -11,12 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(visible and debug):
-		#print_debug("Local: " + str(get_viewport().get_mouse_position()))
-		#print_debug("Global: " + str(global_position))
-		print_debug("Transform.basis" + str(transform.basis))
-
-	var new_mouse_pos = get_viewport().get_mouse_position()
-	mouse_delta = (new_mouse_pos - mouse_pos).normalized()
-	global_position += transform.basis * Vector3(0, 0, mouse_delta.y).normalized()
-	mouse_pos = get_viewport().get_mouse_position()
+	if(visible):
+		var new_mouse_pos = get_viewport().get_mouse_position()
+		mouse_delta = (new_mouse_pos - mouse_pos).normalized()
+		if debug: print_debug("Mouse delta" + str(mouse_delta))
+		global_position += transform.basis * Vector3(mouse_delta.x, 0, mouse_delta.y).normalized() * move_speed
+		mouse_pos = new_mouse_pos

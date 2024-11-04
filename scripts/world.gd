@@ -6,6 +6,7 @@ var main_camera: Camera3D
 func _ready() -> void:
 	main_camera = get_node("Player/PlayerCamera")
 	get_node("Shelf/StockZone").stocking_started.connect(on_stocking_started)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
