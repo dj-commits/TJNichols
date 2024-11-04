@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyw0c7f1ndh1t"]
+
+[ext_resource type="Script" path="res://scripts/stock_zone.gd" id="1_65jfc"]
+[ext_resource type="Script" path="res://scenes/stock_camera.gd" id="2_5vxc2"]
+[ext_resource type="PackedScene" uid="uid://cxufprbydwj7h" path="res://scenes/arm.tscn" id="2_alaf3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xfrdv"]
+radius = 1.0
+
+[node name="StockZone" type="Node3D"]
+script = ExtResource("1_65jfc")
+
+[node name="StockArea" type="Area3D" parent="."]
+
+[node name="StockCollider" type="CollisionShape3D" parent="StockArea"]
+shape = SubResource("SphereShape3D_xfrdv")
+
+[node name="StockCamera" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.419452, 0.907777, 0, 0.907777, 0.419452, -1, 1.83348e-08, -3.96802e-08, 1.5, 2, 0)
+script = ExtResource("2_5vxc2")
+
+[node name="Arm" parent="." instance=ExtResource("2_alaf3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.517956, 1.14521, 0)
+visible = false
+
+[connection signal="body_entered" from="StockArea" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="StockArea" to="." method="_on_area_3d_body_exited"]

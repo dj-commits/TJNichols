@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpu1lvpog2nyg"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_l2u47"]
+[ext_resource type="Texture2D" uid="uid://cqbotscqs4gm3" path="res://sprites/png1.png" id="2_8jhbj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_te6ld"]
+size = Vector3(3.41002, 4.48047, 0.31543)
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
+motion_mode = 1
+script = ExtResource("1_l2u47")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0140352, -0.168945, 0.545422)
+shape = SubResource("BoxShape3D_te6ld")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(7.34443, 0, 0, 0, 7.39159, 0, 0, 0, 1, 0, -0.0102096, 0.506653)
+shaded = true
+texture_filter = 0
+texture = ExtResource("2_8jhbj")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.987688, -0.145297, 0.0579679, 0, 0.370558, 0.928809, -0.156434, -0.917374, 0.365996, 0.248395, 3.34509, 0.40119)
+light_color = Color(0.328583, 0.464211, 0.583008, 1)
+light_energy = 1.75
+light_indirect_energy = 1.365
+light_volumetric_fog_energy = 1.085
+light_size = 15.0
+spot_range = 20.324
+spot_angle = 69.23
+spot_angle_attenuation = 0.25

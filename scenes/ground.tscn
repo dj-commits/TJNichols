@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3pork6x4ou3o"]
+
+[ext_resource type="Texture2D" uid="uid://cb2qe6qca31k7" path="res://sprites/road_t.png" id="1_ckts7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_loik2"]
+albedo_color = Color(0.299547, 0.299547, 0.299547, 1)
+albedo_texture = ExtResource("1_ckts7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8edls"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u6y84"]
+size = Vector3(50, 0.2, 50)
+
+[node name="Ground" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3.83508, 0, 0, 0, -1.64887e-07, 0.99278, 0, -3.77218, -4.33958e-08, -0.130943, 0.490997, -0.163786)
+material_override = SubResource("StandardMaterial3D_loik2")
+texture = ExtResource("1_ckts7")
+
+[node name="GroundCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8edls")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_u6y84")

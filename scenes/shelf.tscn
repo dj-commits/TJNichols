@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://my3mwwitwk7l"]
+
+[ext_resource type="PackedScene" uid="uid://buyqjnfrbgc0" path="res://models/shelf.blend" id="1_abu1c"]
+[ext_resource type="PackedScene" uid="uid://cyw0c7f1ndh1t" path="res://scenes/stock_zone.tscn" id="2_73s7k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7aa1"]
+size = Vector3(2.24088, 1.9884, 6.36987)
+
+[node name="Shelf" type="StaticBody3D"]
+
+[node name="shelf" parent="." instance=ExtResource("1_abu1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.143489)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0193939, 0.494202, -0.0987549)
+shape = SubResource("BoxShape3D_l7aa1")
+
+[node name="StockZone" parent="." instance=ExtResource("2_73s7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41888, 0, 0)

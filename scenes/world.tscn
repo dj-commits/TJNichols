@@ -1,0 +1,165 @@
+[gd_scene load_steps=12 format=3 uid="uid://dl3yd2oi6mvwf"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_4gcy8"]
+[ext_resource type="PackedScene" uid="uid://d3pork6x4ou3o" path="res://scenes/ground.tscn" id="1_x1pfp"]
+[ext_resource type="PackedScene" uid="uid://bpu1lvpog2nyg" path="res://scenes/player.tscn" id="2_8u26h"]
+[ext_resource type="PackedScene" uid="uid://b2x71cnikrifs" path="res://scenes/fence.tscn" id="3_k0wj7"]
+[ext_resource type="PackedScene" uid="uid://my3mwwitwk7l" path="res://scenes/shelf.tscn" id="4_2o72n"]
+[ext_resource type="PackedScene" uid="uid://jo28uo63eua6" path="res://scenes/santa.tscn" id="5_o2npr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vf3fv"]
+sky_top_color = Color(0.328583, 0.464211, 0.583008, 1)
+sky_horizon_color = Color(0.628689, 0.655255, 0.67643, 1)
+sky_energy_multiplier = 0.9
+ground_bottom_color = Color(0.186174, 0.156811, 0.122711, 1)
+ground_horizon_color = Color(0.628689, 0.655255, 0.67643, 1)
+
+[sub_resource type="Sky" id="Sky_jw04l"]
+sky_material = SubResource("ProceduralSkyMaterial_vf3fv")
+
+[sub_resource type="Environment" id="Environment_d1uii"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_jw04l")
+ambient_light_source = 2
+ambient_light_color = Color(0.098, 0.204167, 0.28, 1)
+ambient_light_energy = 0.0
+reflected_light_source = 2
+tonemap_exposure = 1.3
+fog_light_energy = 0.15
+fog_sun_scatter = 0.55
+fog_density = 0.0205
+volumetric_fog_density = 0.0079
+volumetric_fog_emission = Color(0.098, 0.204167, 0.28, 1)
+volumetric_fog_gi_inject = 1.64
+volumetric_fog_length = 96.34
+adjustment_enabled = true
+adjustment_brightness = 0.16
+adjustment_contrast = 0.75
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4vc4k"]
+
+[sub_resource type="Compositor" id="Compositor_dmqwx"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_4gcy8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d1uii")
+camera_attributes = SubResource("CameraAttributesPractical_4vc4k")
+compositor = SubResource("Compositor_dmqwx")
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.680721, -0.546093, 0.488264, 0, 0.666532, 0.745476, -0.732543, 0.507461, -0.453723, 0, 0, 0)
+light_color = Color(0.390292, 0.3825, 0.85, 1)
+light_energy = 6.338
+shadow_enabled = true
+directional_shadow_split_1 = 0.622
+directional_shadow_split_2 = 0.0
+directional_shadow_fade_start = 0.16
+directional_shadow_pancake_size = 36.0
+
+[node name="Ground" parent="." instance=ExtResource("1_x1pfp")]
+
+[node name="Player" parent="." instance=ExtResource("2_8u26h")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 2.4759, 7.45284)
+
+[node name="PlayerCamera" type="Camera3D" parent="Player"]
+transform = Transform3D(1.62833, 0, 0, 0, 1.51916, 0.586195, 0, -0.586195, 1.51916, 0.514946, 4.10666, 5.70188)
+fov = 65.1778
+
+[node name="Fence" parent="." instance=ExtResource("3_k0wj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8603, 0.746212, 4.75493)
+
+[node name="Fence2" parent="." instance=ExtResource("3_k0wj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3411, 0.688454, 10.1716)
+
+[node name="Fence3" parent="." instance=ExtResource("3_k0wj7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.820171, 1.49242, -27.04)
+
+[node name="Fence4" parent="." instance=ExtResource("3_k0wj7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.57907, 2.98485, 24.9866)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.146221, 0, 0.989252, 0, 1, 0, -0.989252, 0, -0.146221, 2.32539, 7, 4.93434)
+light_color = Color(1, 1, 0.670588, 1)
+light_energy = 50.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 100.0
+omni_attenuation = 4.0
+omni_shadow_mode = 0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(0.426158, 0, -0.904649, 0, 1, 0, 0.904649, 0, 0.426158, -8.18561, 7, -11.2747)
+light_color = Color(1, 1, 0.670588, 1)
+light_energy = 50.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 100.0
+omni_attenuation = 4.0
+omni_shadow_mode = 0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(0.84444, 0, -0.53565, 0, 1, 0, 0.53565, 0, 0.84444, 1.85653, 7, -12.8933)
+light_color = Color(1, 1, 0.670588, 1)
+light_energy = 50.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 100.0
+omni_attenuation = 4.0
+omni_shadow_mode = 0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.653368, 0, -0.757041, 0, 1, 0, 0.757041, 0, -0.653368, 2.18215, 7, 5.10603)
+light_color = Color(1, 1, 0.670588, 1)
+light_energy = 50.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 100.0
+omni_attenuation = 4.0
+omni_shadow_mode = 0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(0.84444, 0, -0.53565, 0, 1, 0, 0.53565, 0, 0.84444, 19.8897, 7, 4.36868)
+light_color = Color(1, 1, 0.670588, 1)
+light_energy = 50.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 100.0
+omni_attenuation = 4.0
+omni_shadow_mode = 0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.146221, 0, 0.989252, 0, 1, 0, -0.989252, 0, -0.146221, -15.3237, 7, 4.93462)
+light_color = Color(1, 1, 0.670588, 1)
+light_energy = 50.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 100.0
+omni_attenuation = 4.0
+omni_shadow_mode = 0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+autoplay = true
+emission_angle_degrees = 65.0
+attenuation_filter_cutoff_hz = 4500.0
+attenuation_filter_db = -20.0
+
+[node name="Shelf" parent="." instance=ExtResource("4_2o72n")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.456, 1.5, 0)
+
+[node name="Santa" parent="." instance=ExtResource("5_o2npr")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 10.0667, 4.40485, -26.2765)
