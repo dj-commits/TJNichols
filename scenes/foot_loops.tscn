@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtgbxgvy5i233"]
+[gd_scene load_steps=3 format=3 uid="uid://dtgbxgvy5i233"]
 
 [ext_resource type="PackedScene" uid="uid://dug2m8px0yqki" path="res://models/FootLoops.glb" id="1_r54h3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mvfm3"]
+size = Vector3(0.260254, 1.31873, 0.939331)
 
 [node name="FootLoops" type="RigidBody3D"]
 
 [node name="Mesh" parent="." instance=ExtResource("1_r54h3")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.045166, 0.653669, 0.0452271)
+shape = SubResource("BoxShape3D_mvfm3")

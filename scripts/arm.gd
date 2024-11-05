@@ -25,7 +25,6 @@ func _process(delta):
 			movement_z -= move_speed * delta
 		
 		
-		global_position.y += movement_y
-		global_position.z += movement_z
+		move_and_collide(Vector3(0, movement_y, movement_z))
 		print_debug("global position" + str(global_position))
 		print_debug("local position" + str(position))

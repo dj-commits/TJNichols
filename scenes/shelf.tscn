@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://buyqjnfrbgc0" path="res://models/shelf.blend" id="1_abu1c"]
 [ext_resource type="PackedScene" uid="uid://cyw0c7f1ndh1t" path="res://scenes/stock_zone.tscn" id="2_73s7k"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l7aa1"]
-size = Vector3(2.24088, 1.76666, 6.36987)
+[sub_resource type="BoxShape3D" id="BoxShape3D_8wm7u"]
+size = Vector3(2.36719, 0.113342, 6.38959)
 
 [node name="Shelf" type="StaticBody3D"]
 collision_mask = 3
@@ -13,8 +13,8 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.143489)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0193939, 0.383332, -0.0987549)
-shape = SubResource("BoxShape3D_l7aa1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0313874, 0.877073, -0.150116)
+shape = SubResource("BoxShape3D_8wm7u")
 
 [node name="StockZone" parent="." instance=ExtResource("2_73s7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41888, 0, 0)

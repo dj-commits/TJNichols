@@ -9,6 +9,7 @@ size = Vector3(0.379482, 1.26294, 0.211182)
 [node name="Arm" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 5
+motion_mode = 1
 script = ExtResource("1_bk8d8")
 move_speed = 5.0
 

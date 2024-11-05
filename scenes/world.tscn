@@ -71,15 +71,19 @@ fov = 65.1778
 
 [node name="Fence" parent="." instance=ExtResource("3_k0wj7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8603, 0.746212, 4.75493)
+visible = false
 
 [node name="Fence2" parent="." instance=ExtResource("3_k0wj7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3411, 0.688454, 10.1716)
+visible = false
 
 [node name="Fence3" parent="." instance=ExtResource("3_k0wj7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.820171, 1.49242, -27.04)
+visible = false
 
 [node name="Fence4" parent="." instance=ExtResource("3_k0wj7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.57907, 2.98485, 24.9866)
+visible = false
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
 transform = Transform3D(-0.146221, 0, 0.989252, 0, 1, 0, -0.989252, 0, -0.146221, 2.32539, 7, 4.93434)
@@ -159,12 +163,15 @@ emission_angle_degrees = 65.0
 attenuation_filter_cutoff_hz = 4500.0
 attenuation_filter_db = -20.0
 
-[node name="Shelf" parent="." instance=ExtResource("4_2o72n")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.456, 1.5, 0)
-
 [node name="Santa" parent="." instance=ExtResource("5_o2npr")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 10.0667, 4.40485, -26.2765)
 
-[node name="FootLoops" parent="." instance=ExtResource("7_y5qld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57601, 4.40192, -2.3577)
-gravity_scale = 0.0
+[node name="Shelves" type="Node" parent="."]
+
+[node name="Shelf" parent="Shelves" instance=ExtResource("4_2o72n")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.456, 1.5, 0)
+
+[node name="ShelfItems" type="Node" parent="."]
+
+[node name="FootLoops" parent="ShelfItems" instance=ExtResource("7_y5qld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81991, -0.408169, -1.33811)
