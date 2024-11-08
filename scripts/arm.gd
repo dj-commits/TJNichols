@@ -31,18 +31,23 @@ func _process(delta):
 		
 		move_and_collide(Vector3(velocity.x * delta, movement_y, movement_z))
 		velocity.x = 0
+		
 
 func _physics_process(delta: float) -> void:
 	if(picking):
 		var screen_space = get_world_3d().direct_space_state
-		var origin = $Sprite3D.global_position
-		var end = origin * ray_length
-		var query = PhysicsRayQueryParameters3D.create(origin,end)
+		var origin = global_position
+		var query = PhysicsRayQueryParameters3D.create(origin,Vector3(0, ray_length, 3))
 		query.exclude = [self]
 		var result = screen_space.intersect_ray(query)
 		if(result):
-			print_debug(result.collider)
+			if(result.collider.is_in_group("Stockables")):
+				print(result.collider)
+				
+		picking = false
 
 func _input(event):
 	if(event is InputEventMouseMotion):
 		velocity.x = event.screen_relative.normalized().y
+		if(event.velocity <= Vector2.ZERO):
+			get_viewport().warp_mouse(get_viewport().get_visible_rect().size / 2)

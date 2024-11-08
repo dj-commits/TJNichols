@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_mvfm3"]
 size = Vector3(0.260254, 1.31873, 0.939331)
 
-[node name="FootLoops" type="RigidBody3D"]
+[node name="FootLoops" type="RigidBody3D" groups=["Stockables"]]
 
 [node name="Mesh" parent="." instance=ExtResource("1_r54h3")]
 
